@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- angularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <!-- pagination-->
+    <script src="dirPagination.js"></script>
+    <!-- bootstrap -->
+    <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script data-require="bootstrap@3.1.1" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
+    <!-- css -->
+    <link rel="stylesheet" href="solr_style.css" />
+    
+</head>
+<body ng-app="myApp" ng-controller="controller as ctrl">
+    
+    <div class="container-fluid">
+        <div class="header_font" ng-if="hideFontBar == false" >Welcome!</div>
+        <div class="input-group" id="search_bar_font" ng-if="hideFontBar == false">
+            <input type="text" class="form-control" id="key_word_font" ng-model='search_input' ng-change='_suggestHandler()' />
+            <div class="input-group-btn">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary" ng-click="fontBarHandler($event)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+<!--            <button type="button" class="btn btn-primary"  >Search!</button>-->
+        </div>
+        
+        
+        <div class="row" id="results_panal">
+        <!-- header -->
+        <div class="header">
+            <span style="color:coral;">Andrew's </span><span style="color:cornflowerblue">Search Engine</span>
+        </div>
+        <!-- search bar --> 
+        <div class="row">
+        <div class="col-md-12">
+        <div class="input-group" id="search_bar">
+            <input type="text" class="form-control" id="key_word" name="key_word" ng-model='search_input' ng-change='_suggestHandler()' />
+            <div class="input-group-btn">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary" ng-click="searchHandler()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <!-- hint -->
+        <div class="row" ng-show="search_input !== null && search_input.length > 0"> 
+        <div class="col-md-12" >
+            <div id="search_hint">
+                <ul class="hint_ul">
+                    <li class="hint_list" ng-repeat="sg in sgArray track by $index">
+                        {{sg.term}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <!-- auto correct -->
+        <div class="row" ng-show="autoCorrectWord !== null">
+            <div id="search_correct">
+                Did you mean {{autoCorrectWord}} ?
+            </div>
+        </div>
+        <!-- results -->
+        <div class="row">
+            <div class="search_results">
+            <ul>
+            <li dir-paginate="res in resArray | itemsPerPage: pageSize" current-page="currentPage">
+                <div class="result_unit" ng-if="res.title.length > 0 && res.date.length > 0 && res.url.length > 0">
+                <a href="{{res.url}}">{{formatTitle(res.title)}}</a>
+                <br>
+                <span class="url">{{res.url}}</span>
+                <br>
+                <span>{{formatDate(res.date)}}</span>
+                <br>
+                <span>{{formatDescription(res.description)}}</span>
+                </div>
+            </li>
+            </ul>    
+            </div>
+        </div>
+    
+    <!-- pagination -->
+    <div ng-controller="OtherController" class="other-controller">
+        <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+        </div>
+    </div>
+        
+            
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="solr_script.js"></script>
+</body>
+</html>

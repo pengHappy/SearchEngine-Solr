@@ -1,0 +1,142 @@
+.my-controller {
+/*  border: 1px solid #fcc;*/
+  padding: 5px;
+  margin: 3px;
+}
+.my-controller small {
+/*  color: #c99;*/
+}
+.other-controller {
+/*  border: 1px solid #ccf;*/
+  padding: 5px;
+  margin: 3px;
+}
+.other-controller small {
+/*  color: #99c;*/
+}
+
+div .header {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 30px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+div #search_bar {
+    text-align: center;
+    width: 65%;
+    margin: 0 auto;
+/*    padding: 10px;*/
+}
+
+div #search_hint {
+    width: 65%;
+    margin: 0 auto;
+}
+
+div #search_correct {
+    width: 65%;
+    margin: 0 auto;
+    padding-left: 10px;
+    color: red;
+    font-size: 15px;
+}
+
+li .hint_list {
+/*    position: relative;*/
+    float: left;
+}
+
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+
+.btn-group .btn {
+    border-radius: 1;
+    margin-left: -1px;
+}
+
+/*
+div #panel {
+    text-align: center;
+    margin: 0 auto
+}
+*/
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.hint_ul {
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+div .search_results {
+/*    text-align: center;*/
+    width: 63%;
+    margin: 0 auto
+}
+
+div .result_unit {
+    padding-bottom: 10px;
+    padding-top: 10px;
+/*    margin: 0 auto;*/
+}
+
+a {
+    font-size: 22px;
+}
+
+.url {
+    color: green;
+}
+
+#results_panal {
+    display: none;
+}
+
+#search_bar_font {
+    text-align: center;
+    width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#search_bar_font.ng-leave {
+    opacity: 1.0;
+/*    display: block !important;*/
+    transition: 1s linear all;
+}
+
+#search_bar_font.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+.header_font {
+    text-align: center;
+    width: 75%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: coral;
+    font-size: 60px;
+}
+
+.header_font.ng-leave {
+    opacity: 1.0;
+/*    display: block !important;*/
+    transition: 1s linear all;
+}
+
+.header_font.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
