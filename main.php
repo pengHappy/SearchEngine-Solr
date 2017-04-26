@@ -8,6 +8,7 @@ include 'SpellCorrector.php';
 $limit = 500;
 $query = isset($_GET["keyword"]) ? $_GET["keyword"] : false;
 $requestHandler = isset($_GET["requestHandler"]) ? $_GET["requestHandler"] : false;
+$algorithm = isset($_GET["algorithm"]) ? $_GET["algorithm"] : false;
 $results = false;
 
 if ($query)
@@ -50,8 +51,12 @@ if ($query)
 	// possible exceptions emitted  by searching (i.e. connection
 	// problems or a query parsing error)
 	try {
-
-		$results = $solr->search($query, 0, $limit);
+		if($algorithm == "pagerank") {
+			$results = $solr->search($query, 0, $limit, array('sort' => 'id desc'));
+		}
+		else {
+			$results = $solr->search($query, 0, $limit);
+		}
 
 	} catch (Exception $e) {
 		// in production you'd probably log or email this error to an admin
