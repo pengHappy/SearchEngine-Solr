@@ -60,6 +60,16 @@
             </div>
         </div>
         </div>
+        <div class="row">
+            <div id="algorithm">
+            <span class="radio">
+                <label><input type="radio" name="optradio" value="lucence" ng-model='algorithm'>Lucence</label>
+            </span>
+            <span class="radio">
+                <label><input type="radio" name="optradio" value="pagerank" ng-model='algorithm'>PageRank</label>
+            </span>
+            </div>    
+        </div>
         <!-- auto correct -->
         <div class="row" ng-show="autoCorrectWord !== null">
             <div id="search_correct">

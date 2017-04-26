@@ -5,6 +5,7 @@ var phpUrl = "main.php?keyword=";
 
 function controller($scope, $http, $window, $timeout) {
     
+    $scope.algorithm = 'lucence';
     $scope.autoCorrectWord = '';
     $scope.search_input = '';
     $scope.currentPage = 1;
@@ -18,12 +19,13 @@ function controller($scope, $http, $window, $timeout) {
     // formal search
     $scope.searchHandler = function() {
         var key_word = document.getElementById("key_word").value;
-        var realUrl = phpUrl + key_word;
+        var realUrl = phpUrl + key_word + "&algorithm=" + $scope.algorithm;
         $http({
             method: 'GET',
             url: realUrl
         }).then(function successCallback(response) {
             console.log(response.data);
+            console.log($scope.algorithm);
             $scope.resArray = response.data.results;
             $scope.autoCorrectWord = response.data.auto_correct;
         }, function errorCallback(response) {

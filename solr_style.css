@@ -35,6 +35,12 @@ div #search_hint {
     margin: 0 auto;
 }
 
+div #algorithm {
+    width: 65%;
+    margin: 0 auto;
+    padding-left: 10px;
+}
+
 div #search_correct {
     width: 65%;
     margin: 0 auto;
